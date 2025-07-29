@@ -12,4 +12,8 @@ class Conexao {
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+
+    fun getClienteService(): ClienteService{
+        return conexao.create(ClienteService::class.java)
+    }
 }
