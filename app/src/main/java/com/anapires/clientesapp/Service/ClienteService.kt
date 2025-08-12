@@ -1,13 +1,28 @@
-package com.anapires.clientesapp.Service
+package br.senai.sp.jandira.clientesapp.service
 
 import com.anapires.clientesapp.Model.Cliente
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface ClienteService {
-    
+
     @POST("clientes")
     fun cadastrarCliente(@Body cliente: Cliente): Call<Cliente>
 
+    @GET("clientes")
+    fun listarTodos(): Call<List<Cliente>>
+
+    @GET("clientes/{id}")
+    fun buscarPorId(@Path("id") id: Long): Call<Cliente>
+
+    @PUT("clientes")
+    fun atualizar(@Body cliente: Cliente): Call<Cliente>
+
+    @DELETE()
+    fun deletarCLientes(@Body cliente: Cliente): Unit
 }
